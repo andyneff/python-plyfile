@@ -27,6 +27,11 @@ try:
 except NameError:
     _range = range
 
+try:
+    _str = basestring
+except NameError:
+    _str = str
+
 
 # Many-many relation
 _data_type_relation = [
@@ -279,7 +284,7 @@ class PlyData(object):
         '''
         must_close = False
         try:
-            if isinstance(stream, str):
+            if isinstance(stream, _str):
                 stream = open(stream, 'rb')
                 must_close = True
 
@@ -301,7 +306,7 @@ class PlyData(object):
         '''
         must_close = False
         try:
-            if isinstance(stream, str):
+            if isinstance(stream, _str):
                 stream = open(stream, 'wb')
                 must_close = True
 
